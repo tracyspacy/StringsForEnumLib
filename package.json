@@ -1,0 +1,16 @@
+{
+  "name": "stringsforenum",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "ganache": "ganache-cli --networkId 4447",
+    "migrate": "truffle migrate --reset",
+    "test": "truffle test"
+  },
+  "author": "tracyspacy",
+  "license": "MIT",
+  "devDependencies": {
+    "@openzeppelin/test-helpers": "^0.5.16"
+  }
+}
