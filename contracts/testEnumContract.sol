@@ -7,15 +7,19 @@ contract TestEnumContract {
 
     enum ActionChoices { GoLeft, GoRight, GoStraight, SitStill }
 
-    StringsForEnum.EnumData private actionChoicesData;
     ActionChoices choice;
     ActionChoices constant defaultChoice = ActionChoices.GoStraight;
 
     constructor() {
-        actionChoicesData.enumToString[uint8(ActionChoices.GoLeft)] = "GoLeft";
-        actionChoicesData.enumToString[uint8(ActionChoices.GoRight)] = "GoRight";
-        actionChoicesData.enumToString[uint8(ActionChoices.GoStraight)] = "GoStraight";
-        actionChoicesData.enumToString[uint8(ActionChoices.SitStill)] = "SitStill";
+        //writing to right slot
+        StringsForEnum.EnumData storage enumData = StringsForEnum.getEnumDataPointer();
+        enumData.enumToString[uint8(ActionChoices.GoLeft)] = "GoLeft";
+        enumData.enumToString[uint8(ActionChoices.GoRight)] = "GoRight";
+        enumData.enumToString[uint8(ActionChoices.GoStraight)] = "GoStraight";
+        enumData.enumToString[uint8(ActionChoices.SitStill)] = "SitStill";
+        // also possible to do it in pretty way, but very costly
+        // uint8(ActionChoices.GoLeft).setString("GoLeft");
+
     }
 
     function setGoStraight() public {
@@ -37,13 +41,16 @@ contract TestEnumContract {
 
 
     function getNotValidEnum(uint8 notValidEnumValue) public view returns(string memory){
-        // will show string for valid though
         return notValidEnumValue.toString();
     }
 
 
     function getChoiceStr() public view returns (string memory){
         return uint8(choice).toString();
+    }
+
+    function getChoice() public view returns (ActionChoices){
+        return choice;
     }
 
     function getLargestValueStr() public view returns (string memory) {
