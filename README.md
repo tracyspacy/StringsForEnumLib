@@ -2,8 +2,9 @@
 
 
 ## Overview
+My motivation was to create a library that while works with / modifies contract storage, is still simple to interact with (as simple as a.toString(), without complex parameters).  
 
-StringsForEnum is a Solidity library that provides a solution to a limitation in Solidity's native support for enumerated types (enums). By default, Solidity does not support string values for enums. This library overcomes this limitation, making it easier for developers to work with enums by allowing them to get string values for enum elements.
+StringsForEnum is a Solidity library example that provides a solution to a limitation in Solidity's native support for enumerated types (enums). By default, Solidity does not support string values for enums. This library overcomes this limitation, making it easier for developers to work with enums by allowing them to get string values for enum elements.
 
 
 
